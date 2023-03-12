@@ -13,6 +13,7 @@ public class DemoqaTest {
     static void beforeAll() {
         open("https://demoqa.com/automation-practice-form");
         Configuration.browserSize = "1920x1080";
+//        Configuration.holdBrowserOpen = true;
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
     }
@@ -37,9 +38,6 @@ public class DemoqaTest {
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("English").pressEnter();
-//        $("#subjectsContainer").click();
-//        $("#subjectsContainer").val("M");
-        //$(".subjects-auto-complete_")
         $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.jpg");
         $("#currentAddress").setValue(userAddress);
