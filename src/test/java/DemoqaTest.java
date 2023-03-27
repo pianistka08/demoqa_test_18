@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -11,11 +12,14 @@ public class DemoqaTest {
 
     @BeforeAll
     static void beforeAll() {
-        open("https://demoqa.com/automation-practice-form");
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-//        Configuration.holdBrowserOpen = true;
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        Configuration.holdBrowserOpen = true;
+    }
+
+    @BeforeEach
+    void beforeEach() {
+        Configuration.browser = "firefox";
     }
 
     @Test
@@ -26,6 +30,9 @@ public class DemoqaTest {
         String userEmail = "marinaivanova@mail.ru";
         String userAddress = "High Road 33";
 
+        open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue(userName);
         $("#lastName").setValue(userLastName);
         $("#userEmail").setValue(userEmail);
@@ -49,6 +56,7 @@ public class DemoqaTest {
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text(userName), text(userLastName),
-                text(userEmail), text(userPhoneNumber));
+                text(userEmail), text(userPhoneNumber), text("Female"), text("30 October,1990"), text("English"), text("Music"),
+                text("1.jpg"), text(userAddress), text("NCR Delhi"));
     }
 }
