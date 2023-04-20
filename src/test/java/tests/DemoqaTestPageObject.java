@@ -1,24 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-public class DemoqaTestPageObject {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        Configuration.browser = "firefox";
-    }
+public class DemoqaTestPageObject extends TestBase {
 
     @Test
     void practiceFormTest() {
