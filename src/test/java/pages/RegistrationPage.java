@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -111,6 +110,18 @@ public class RegistrationPage {
     public RegistrationPage clickSubmit() {
         submitButtonElement.click();
 
+        return this;
+    }
+
+    public RegistrationPage setUserBirthdayFromString(String birthdayDate) {
+
+        calendarElement.click();
+      String[] substr1 = birthdayDate.split(" ");
+      String day = substr1[0];
+      String[] substr2 = substr1[1].split(",");
+      String month = substr2[0];
+      String year = substr2[1];
+        CalendarComponent.setDate(year, month, day);
         return this;
     }
 
