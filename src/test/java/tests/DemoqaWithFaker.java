@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.TestBase;
 import utils.TestData;
+
 import static utils.DataUtils.getDate;
 import static utils.RandomUtils.*;
+
 import java.util.Locale;
 
 public class DemoqaWithFaker extends TestBase {
@@ -18,17 +20,17 @@ public class DemoqaWithFaker extends TestBase {
 
         // переменные, значение которых получено с помощью Faker
         String userName = faker.name().firstName(),
-            userLastName = faker.name().lastName(),
-            userPhoneNumber = faker.phoneNumber().subscriberNumber(10),
-            userEmail = faker.internet().emailAddress(),
-            userAddress = faker.address().fullAddress();
+                userLastName = faker.name().lastName(),
+                userPhoneNumber = faker.phoneNumber().subscriberNumber(10),
+                userEmail = faker.internet().emailAddress(),
+                userAddress = faker.address().fullAddress();
         String userBirthday = getDate();
         // переменные, значение которых получено с помощью Random
         String userGender = getRandomValue(TestData.genderList),
-            userSubject = getRandomValue(TestData.subjectList),
+                userSubject = getRandomValue(TestData.subjectList),
                 userHobbies = getRandomValue(TestData.hobbiesList),
-            userState = getRandomValue(TestData.stateList),
-            userCity = getRandomCity(userState);
+                userState = getRandomValue(TestData.stateList),
+                userCity = getRandomCity(userState);
 
         registrationPage.openPage();
         registrationPage.setFirstName(userName);
